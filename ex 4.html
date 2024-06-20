@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration Form</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="bootstrap.bundle.min.js"></script>
+  <style>
+    table td,th{
+      padding:10px;
+    }
+    table{
+      margin: auto;
+    }
+    h2{
+      text-align: center;
+    }
+    .tr1{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>USER REGISTRATION FORM</h2>
+  <form id="registrationForm">
+    <table border="3">
+      <tr>
+        <th>Name</th>
+        <td><input type="text" id="name" class="name"></td>
+      </tr>
+      <tr>
+        <th>Gender</th>
+        <td><input type="radio" class="gender" name="gender" value="male">Male
+        <input type="radio" class="gender" name="gender" value="female">Female
+        <input type="radio" class="gender" name="gender" value="other">Other</td>
+      </tr>
+      <tr>
+        <th>Languages known</th>
+        <td><input type="checkbox" class="language" value="tamil">Tamil
+        <input type="checkbox" class="language" value="english">English
+        <input type="checkbox" class="language" value="hindi">Hindi</td>
+      </tr>
+      <tr>
+        <th>Select District</th>
+        <td><select id="district" class="district">
+          <option value="namakkal">Namakkal</option>
+          <option value="erode">Erode</option>
+          <option value="chennai">Chennai</option>
+          <option value="coimbatore">Coimbatore</option>
+          <option value="madurai">Madurai</option>
+          <option value="salem">Salem</option>
+        </select></td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td><textarea id="address" class="address" rows="4" cols="17"></textarea></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><input type="text" id="email" class="email"></td>
+      </tr>
+      <tr>
+        <th>Mobile No</th>
+        <td><input type="text" id="mobile" class="mobile"></td>
+      </tr>
+      <tr>
+        <th>Username</th>
+        <td><input type="text" id="username" class="username"></td>
+      </tr>
+      <tr>
+        <th>Password</th>
+        <td><input type="password" id="password" class="password"></td>
+      </tr>
+      <tr class="tr1">
+        <td colspan="2"><button type="submit">Submit</button></td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      validateForm();
+    });
+
+    function validateForm() {
+      // Regular expressions for validation
+      var nameRegex = /^[a-zA-Z\s]+$/;
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var mobileRegex = /^\d{10}$/;
+      var usernameRegex = /^[a-zA-Z0-9_-]{5,20}$/;
+      var passwordRegex = /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}$/;
+
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var mobile = document.getElementById('mobile').value;
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Validation
+      if (!nameRegex.test(name)) {
+        alert('Please enter a valid name.');
+        return false;
+      }
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+      }
+      if (!mobileRegex.test(mobile)) {
+        alert('Please enter a valid mobile number.');
+        return false;
+      }
+      if (!usernameRegex.test(username)) {
+        alert('Please enter a valid username (5-20 characters, alphanumeric, underscore, or hyphen).');
+        return false;
+      }
+      if (!passwordRegex.test(password)) {
+        alert('Please enter a valid password (at least 15 characters, at least one uppercase letter, one lowercase letter, and one number).');
+        return false;
+      }
+
+      // Form is valid, submit it or do other actions
+      alert('Form submitted successfully!');
+      return true;
+    }
+  </script>
+</body>
+</html>
