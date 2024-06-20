@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System - Patient Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Patient Registration</h2>
+    <form action="/submit_patient_registration" method="post">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group">
+            <label for="middle_name">Middle Name:</label>
+            <input type="text" id="middle_name" name="middle_name">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+        </div>
+        <div class="form-group">
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" id="patient_id" name="patient_id" required>
+        </div>
+        <div class="form-group">
+            <label for="mobile_no">Mobile Number:</label>
+            <input type="tel" id="mobile_no" name="mobile_no" required>
+        </div>
+        <div class="form-group">
+            <label for="hospital_no">Hospital Number:</label>
+            <input type="text" id="hospital_no" name="hospital_no" required>
+        </div>
+        <div class="form-group">
+            <label for="branch">Branch of Hospital:</label>
+            <input type="text" id="branch" name="branch" required>
+        </div>
+        <div class="form-group">
+            <label for="doctor_name">Doctor Name:</label>
+            <input type="text" id="doctor_name" name="doctor_name" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="hospital_address">Hospital Address:</label>
+            <textarea id="hospital_address" name="hospital_address" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="problem">Medical Problem:</label>
+            <textarea id="problem" name="problem" rows="3" placeholder="e.g., headache, fever, cold"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="medical_fee">Medical Fee:</label>
+            <input type="number" id="medical_fee" name="medical_fee" required>
+        </div>
+        <div class="form-group">
+            <label for="doctor_fee">Doctor Fee:</label>
+            <input type="number" id="doctor_fee" name="doctor_fee" required>
+        </div>
+        <div class="form-group">
+            <label for="hospital_fee">Hospital Fee:</label>
+            <input type="number" id="hospital_fee" name="hospital_fee" required>
+        </div>
+        <div class="form-group">
+            <label for="hospital_name">Hospital Name:</label>
+            <input type="text" id="hospital_name" name="hospital_name" required>
+        </div>
+        <button type="submit" class="btn">Register</button>
+    </form>
+</div>
+
+</body>
+</html>

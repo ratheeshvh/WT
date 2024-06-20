@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Portal</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            background-color: aliceblue;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 40px auto;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .form-container:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+        .btn-primary,
+        .btn-danger,
+        .btn-warning,
+        .btn-info {
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #067af7;
+            border-color: #851f00;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Job Application Portal</h1>
+        <form id="form" method="get" class="form-container" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Position Applied For</label>
+                <input type="text" id="position" name="position" class="form-control" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" onclick="set('/insert', event)" class="btn btn-primary">Submit Application</button>
+                <button type="submit" onclick="set('/delete', event)" class="btn btn-danger">Delete Application</button>
+                <button type="submit" onclick="set('/update', event)" class="btn btn-warning">Update Application</button>
+                <button type="submit" onclick="set('/display', event)" class="btn btn-info">View Applications</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function set(path, event) {
+            event.preventDefault();
+            document.getElementById('form').action = 'http://localhost:7050' + path;
+            document.getElementById('form').submit();
+        }
+
+        function validateForm(event) {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const position = document.getElementById('position').value.trim();
+
+            if (!name || !email || !phone || !address || !position) {
+                alert('All fields are required.');
+                return false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            const phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number (10 digits).');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
